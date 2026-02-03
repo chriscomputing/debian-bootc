@@ -6,8 +6,11 @@ podman run --rm --privileged \
   --security-opt label=disable \
   localhost/debian-bootc:latest \
   bootc install to-disk \
-  --generic-image \
-  --via-loopback \
-  --filesystem ext4 \
-  --wipe \
-  /output/debian-bootc.raw
+    --wipe \
+    --filesystem ext4 \
+    --disable-selinux \
+    --generic-image \
+    --bootloader systemd \
+    --composefs-backend \
+    --via-loopback \
+    /output/bootable.img
